@@ -31,6 +31,7 @@
     "sequelize": "^3.30.1",
     "source-map-support": "^0.4.11",
     "sqlite3": "^3.1.8",
+    "universal-router": "^2.0.0",
     "whatwg-fetch": "^2.0.2"
   },
   "devDependencies": {
@@ -107,9 +108,58 @@
     "webpack-hot-middleware": "^2.16.1",
     "write-file-webpack-plugin": "^3.4.2"
   },
-  "main": "index.js",
-  "scripts": {
+  "babel": {
+    "presets": [
+      "react",
+      "stage-0"
+    ],
+    "plugins": [
+      "syntax-trailing-function-commas",
+      "transform-async-to-generator",
+      "transform-es2015-destructuring",
+      "transform-es2015-parameters",
+      "transform-es2015-duplicate-keys",
+      "transform-es2015-modules-commonjs",
+      "transform-exponentiation-operator",
+      "transform-runtime"
+    ],
+    "env": {
+      "test": {
+        "plugins": [
+          "rewire"
+        ]
+      }
+    }
   },
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "extends": [
+      "airbnb",
+      "plugin:css-modules/recommended"
+    ],
+    "plugins": [
+      "css-modules"
+    ],
+    "globals": {
+      "__DEV__": true
+    },
+    "env": {
+      "browser": true
+    },
+    "rules": {
+      "arrow-parens": "off",
+      "generator-star-spacing": "off",
+      "import/extensions": "off",
+      "import/no-extraneous-dependencies": "off",
+      "react/jsx-filename-extension": "off",
+      "react/no-array-index-key": "off",
+      "react/no-danger": "off",
+      "react/no-unused-prop-types": "off",
+      "react/require-default-props": "off"
+    }
+  },
+  "main": "index.js",
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/angamaiton/personal-boilerplate-react.git"

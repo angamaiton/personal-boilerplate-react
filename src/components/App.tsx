@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-export interface IAppProps { compiler: string; framework: string; context: any; children: any; }
+export interface IAppProps { context: any;}
 
 class App extends React.Component<IAppProps, undefined>{
   getChildContext() {
     return this.props.context;
   }
   render() {
-    return <h1>Hello from {this.props.compiler} and {this.props.framework}</h1>;
+    return <h1></h1>;
   }
 }
 

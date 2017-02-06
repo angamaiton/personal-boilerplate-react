@@ -2,7 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import UniversalRouter from 'universal-router';
 // import history from './core/history';
-// import App from './components/App';
+import App from './components/App';
+
+const context = {
+  insertCss: (...styles) => {
+    const removeCss = styles.map(x => x._insertCss());
+    return () => { removeCss.forEach(f => f()); };
+  }
+}
 
 const DOM_APP_ID = 'app';
 const container = document.getElementById(DOM_APP_ID);
@@ -16,7 +23,7 @@ async function onLocationChange(location) {
     });
 
     appInstance = ReactDOM.render(
-      <App>{route.component}</App>,
+      <App context={context}>{route.component}</App>,
       container,
     );
   } catch (error) {
